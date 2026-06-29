@@ -21,14 +21,81 @@ const NAV = [
   { label: 'Контакты', href: '#contacts' },
 ];
 
-const PROGRAMS = [
-  { icon: 'Palette', title: 'Творческая мастерская', age: '3–7 лет', color: 'bg-coral', desc: 'Рисование, лепка, аппликация — развиваем фантазию и мелкую моторику.' },
-  { icon: 'BookOpen', title: 'Подготовка к школе', age: '5–7 лет', color: 'bg-teal', desc: 'Чтение, счёт, логика и письмо в игровой форме без скуки.' },
-  { icon: 'Music', title: 'Музыка и ритмика', age: '2–6 лет', color: 'bg-berry', desc: 'Пение, танцы, музыкальные игры для гармоничного развития.' },
-  { icon: 'Calculator', title: 'Ментальная арифметика', age: '6–10 лет', color: 'bg-sky', desc: 'Быстрый устный счёт и тренировка обоих полушарий мозга.' },
-  { icon: 'Globe', title: 'Английский язык', age: '4–10 лет', color: 'bg-grass', desc: 'Живое общение, игры и песни — английский становится родным.' },
-  { icon: 'Rocket', title: 'Робототехника', age: '7–12 лет', color: 'bg-sun', desc: 'Конструируем и программируем первых роботов своими руками.' },
+const PROGRAM_GROUPS = [
+  {
+    category: 'Подготовка к школе',
+    icon: 'BookOpen',
+    color: 'bg-primary',
+    items: [
+      'Подготовка к школе / Экспресс',
+      'Подготовка к школе 2 года',
+      'Подготовка к школе — индивидуально',
+      'Учусь читать (4–5 лет)',
+      'Учусь читать (6–7 лет)',
+      'Техника чтения (читающие дети)',
+    ],
+  },
+  {
+    category: 'Школьные предметы',
+    icon: 'GraduationCap',
+    color: 'bg-secondary',
+    items: [
+      'Русский язык + ВПР + коррекция почерка',
+      'Математика: 2, 3, 4 класс',
+      'Ментальная арифметика',
+      'Развитие памяти (мнемотехника)',
+      'Школа внимания',
+    ],
+  },
+  {
+    category: 'Английский язык',
+    icon: 'Globe',
+    color: 'bg-sky',
+    items: [
+      'Английский язык — группа 2 раза в неделю',
+      'Английский язык — группа 1 раз в неделю',
+      'Английский язык — индивидуально',
+      'Английский язык — индивидуально 1 раз в неделю',
+    ],
+  },
+  {
+    category: 'Творчество',
+    icon: 'Palette',
+    color: 'bg-berry',
+    items: [
+      'ИЗО студия / Креативное рисование',
+      'Школа настроения',
+      'Песочная анимация',
+      'Интерьерная картина',
+      'Пластилинка',
+    ],
+  },
+  {
+    category: 'Нейро-направления 🆕',
+    icon: 'Brain',
+    color: 'bg-grass',
+    items: [
+      'Нейробика',
+      'Нейролепка',
+      'Песочная сказка',
+    ],
+  },
+  {
+    category: 'Психология и помощь',
+    icon: 'Heart',
+    color: 'bg-teal',
+    items: [
+      'Сам себе психолог',
+      'Сам себе психолог для подростков',
+      'Психолог',
+      'Логопед',
+      'Репетитор — индивидуально',
+      'Репетитор — мини-группа (2–3 чел)',
+    ],
+  },
 ];
+
+const ALL_PROGRAMS = PROGRAM_GROUPS.flatMap(g => g.items);
 
 const SCHEDULE = [
   { day: 'Понедельник', items: ['10:00 Творчество', '16:00 Подготовка к школе'] },
@@ -120,8 +187,8 @@ function Index() {
               </div>
               <div className="h-10 w-px bg-border" />
               <div>
-                <div className="font-display text-3xl font-extrabold text-secondary">8</div>
-                <div className="text-sm font-bold text-foreground/60">направлений</div>
+                <div className="font-display text-3xl font-extrabold text-secondary">30+</div>
+                <div className="text-sm font-bold text-foreground/60">программ</div>
               </div>
               <div className="h-10 w-px bg-border" />
               <div>
@@ -180,23 +247,25 @@ function Index() {
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
-              8 направлений развития
+              6 направлений • 30+ программ
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-extrabold">Наши программы</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROGRAMS.map((p) => (
-              <div key={p.title} className="group bg-card rounded-3xl p-7 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${p.color} mb-5 group-hover:animate-wiggle`}>
-                  <Icon name={p.icon} size={32} className="text-white" />
+            {PROGRAM_GROUPS.map((g) => (
+              <div key={g.category} className="group bg-card rounded-3xl p-7 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${g.color} mb-5 group-hover:animate-wiggle`}>
+                  <Icon name={g.icon} size={32} className="text-white" />
                 </div>
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display text-2xl font-extrabold">{p.title}</h3>
-                </div>
-                <span className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-bold text-foreground/60 mb-3">
-                  {p.age}
-                </span>
-                <p className="text-foreground/70">{p.desc}</p>
+                <h3 className="font-display text-xl font-extrabold mb-4">{g.category}</h3>
+                <ul className="space-y-2">
+                  {g.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-foreground/75">
+                      <Icon name="ChevronRight" size={16} className="text-primary mt-0.5 shrink-0" />
+                      <span className="text-sm font-semibold">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -280,9 +349,9 @@ function Index() {
                       <SelectValue placeholder="Выберите направление" />
                     </SelectTrigger>
                     <SelectContent>
-                      {PROGRAMS.map((p) => (
-                        <SelectItem key={p.title} value={p.title}>
-                          {p.title}
+                      {ALL_PROGRAMS.map((p) => (
+                        <SelectItem key={p} value={p}>
+                          {p}
                         </SelectItem>
                       ))}
                     </SelectContent>
