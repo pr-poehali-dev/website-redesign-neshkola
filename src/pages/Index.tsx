@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+
+const PDF_URL = 'https://functions.poehali.dev/8cfcbdd9-9fe1-45b2-9a98-4d05f5e0c880';
 import { Button } from '@/components/ui/button';
 import GlossyBlob from '@/components/GlossyBlob';
 import { Input } from '@/components/ui/input';
@@ -118,6 +120,26 @@ function Index() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [program, setProgram] = useState('');
+  const [pdfLoading, setPdfLoading] = useState(false);
+
+  const handleDownloadPdf = async () => {
+    setPdfLoading(true);
+    try {
+      const res = await fetch(PDF_URL);
+      if (!res.ok) throw new Error('Ошибка генерации');
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'neshkola-buklет.pdf';
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      toast({ title: 'Ошибка', description: 'Не удалось скачать буклет. Попробуйте позже.', variant: 'destructive' });
+    } finally {
+      setPdfLoading(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -305,6 +327,25 @@ function Index() {
               </ul>
             </div>
           ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={handleDownloadPdf}
+            disabled={pdfLoading}
+            className="inline-flex items-center gap-3 rounded-full bg-secondary text-white font-display font-extrabold text-lg px-8 h-14 shadow-xl shadow-secondary/30 hover:scale-105 hover:shadow-2xl transition-all duration-300 disabled:opacity-60 disabled:scale-100"
+          >
+            {pdfLoading ? (
+              <>
+                <Icon name="Loader" size={22} className="animate-spin" />
+                Генерируем буклет...
+              </>
+            ) : (
+              <>
+                <Icon name="Download" size={22} />
+                Скачать полный буклет (PDF)
+              </>
+            )}
+          </button>
         </div>
       </section>
 
