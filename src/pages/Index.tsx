@@ -12,7 +12,7 @@ import {
 import { toast } from '@/hooks/use-toast';
 
 const HERO_IMG =
-  'https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/files/0e73fea1-576d-49c4-b9bc-27011704dd30.jpg';
+  'https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/files/1f5064ac-798f-4b57-bee4-c766928d559d.jpg';
 
 const NAV = [
   { label: 'О центре', href: '#about' },
