@@ -135,13 +135,12 @@ function Index() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between py-4">
-          <a href="#" className="flex items-center gap-2">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground font-display text-2xl font-extrabold rotate-[-6deg]">
-              Н
-            </span>
-            <span className="font-display text-2xl font-extrabold tracking-tight">
-              НЕ<span className="text-primary">ШКОЛА</span>
-            </span>
+          <a href="#" className="flex items-center">
+            <img
+              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/e5babbce-f0f4-42e1-86af-262f415f38e3.png"
+              alt="НЕШКОЛА — территория знаний"
+              className="h-12 w-auto object-contain"
+            />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             {NAV.map((n) => (
@@ -158,9 +157,9 @@ function Index() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <GlossyBlob size={200} color="#6abf3a" className="-top-12 -left-14 opacity-70" delay={0} />
-        <GlossyBlob size={140} color="#8b4fcf" className="top-32 right-8 opacity-60" delay={1.5} slow />
-        <GlossyBlob size={90}  color="#3db87a" className="bottom-10 left-1/3 opacity-50" delay={3} slow />
+        <GlossyBlob size={200} color="#00B33C" className="-top-12 -left-14 opacity-60" delay={0} />
+        <GlossyBlob size={140} color="#7B3FA0" className="top-32 right-8 opacity-50" delay={1.5} slow />
+        <GlossyBlob size={90}  color="#00B33C" className="bottom-10 left-1/3 opacity-40" delay={3} slow />
         <div className="container relative grid lg:grid-cols-2 gap-10 items-center py-16 lg:py-24">
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-bold text-accent-foreground mb-6">
@@ -219,8 +218,8 @@ function Index() {
 
       {/* Features / About */}
       <section id="about" className="relative overflow-hidden container py-16 lg:py-24">
-        <GlossyBlob size={110} color="#8b4fcf" className="top-0 right-0 opacity-40" delay={2} slow />
-        <GlossyBlob size={75}  color="#6abf3a" className="bottom-4 left-0 opacity-35" delay={0.8} />
+        <GlossyBlob size={110} color="#7B3FA0" className="top-0 right-0 opacity-35" delay={2} slow />
+        <GlossyBlob size={75}  color="#00B33C" className="bottom-4 left-0 opacity-30" delay={0.8} />
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">
             Почему выбирают <span className="text-primary">НЕШКОЛУ</span>
@@ -248,8 +247,8 @@ function Index() {
 
       {/* Programs */}
       <section id="programs" className="relative overflow-hidden bg-secondary/10 py-16 lg:py-24">
-        <GlossyBlob size={160} color="#6abf3a" className="-top-10 -right-10 opacity-30" delay={1} slow />
-        <GlossyBlob size={100} color="#8b4fcf" className="bottom-0 left-10 opacity-25" delay={3.5} />
+        <GlossyBlob size={160} color="#00B33C" className="-top-10 -right-10 opacity-25" delay={1} slow />
+        <GlossyBlob size={100} color="#7B3FA0" className="bottom-0 left-10 opacity-20" delay={3.5} />
         <div className="container relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
@@ -280,8 +279,8 @@ function Index() {
 
       {/* Schedule */}
       <section id="schedule" className="relative overflow-hidden container py-16 lg:py-24">
-        <GlossyBlob size={130} color="#3db87a" className="top-8 -right-8 opacity-35" delay={0.5} />
-        <GlossyBlob size={85}  color="#8b4fcf" className="bottom-8 left-4 opacity-30" delay={2.2} slow />
+        <GlossyBlob size={130} color="#00B33C" className="top-8 -right-8 opacity-30" delay={0.5} />
+        <GlossyBlob size={85}  color="#7B3FA0" className="bottom-8 left-4 opacity-25" delay={2.2} slow />
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">Расписание занятий</h2>
           <p className="text-lg text-foreground/70">Выберите удобный день — и приходите за новыми открытиями!</p>
@@ -382,11 +381,12 @@ function Index() {
       <footer id="contacts" className="bg-foreground text-background py-14">
         <div className="container grid md:grid-cols-3 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground font-display text-2xl font-extrabold rotate-[-6deg]">
-                Н
-              </span>
-              <span className="font-display text-2xl font-extrabold">НЕШКОЛА</span>
+            <div className="mb-4">
+              <img
+                src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/e5babbce-f0f4-42e1-86af-262f415f38e3.png"
+                alt="НЕШКОЛА"
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-background/70 max-w-xs">
               Центр развития детей, где учиться — это радость, а каждый день — открытие.

@@ -4,40 +4,42 @@
 
 @layer base {
   :root {
-    --background: 150 50% 97%;
-    --foreground: 265 40% 16%;
+    --background: 140 60% 97%;
+    --foreground: 270 40% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 265 40% 16%;
+    --card-foreground: 270 40% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 265 40% 16%;
+    --popover-foreground: 270 40% 15%;
 
-    --primary: 150 65% 42%;
+    /* Фирменный зелёный НЕШКОЛЫ #00B33C */
+    --primary: 142 100% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 70% 55%;
+    /* Фирменный фиолетовый НЕШКОЛЫ #7B3FA0 */
+    --secondary: 281 44% 43%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 150 35% 93%;
-    --muted-foreground: 265 18% 45%;
+    --muted: 140 30% 93%;
+    --muted-foreground: 270 15% 45%;
 
-    --accent: 145 70% 75%;
-    --accent-foreground: 265 40% 16%;
+    --accent: 140 70% 88%;
+    --accent-foreground: 270 40% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 150 25% 87%;
-    --input: 150 25% 87%;
-    --ring: 150 65% 42%;
+    --border: 140 20% 87%;
+    --input: 140 20% 87%;
+    --ring: 142 100% 35%;
 
-    --sun: 270 70% 55%;
-    --coral: 150 65% 42%;
-    --teal: 270 60% 65%;
-    --berry: 280 65% 50%;
-    --sky: 160 60% 45%;
-    --grass: 135 60% 45%;
+    --sun: 281 44% 43%;
+    --coral: 142 100% 35%;
+    --teal: 281 44% 55%;
+    --berry: 281 44% 43%;
+    --sky: 162 70% 40%;
+    --grass: 142 100% 35%;
 
     --radius: 1.25rem;
 
