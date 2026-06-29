@@ -220,15 +220,16 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className="relative animate-scale-in">
-            <div className="absolute inset-0 bg-secondary rounded-[3rem] rotate-6" />
+          <div className="relative animate-scale-in flex items-center justify-center">
+            <div className="absolute inset-0 rounded-[3rem] bg-primary rotate-3 opacity-20" />
             <img
-              src={HERO_IMG}
-              alt="Дети на развивающих занятиях"
-              className="relative rounded-[3rem] shadow-2xl w-full object-cover aspect-square"
+              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/b16e2d03-cfcb-4562-a981-fa961fe6ba40.png"
+              alt="Персонажи НЕШКОЛЫ"
+              className="relative w-full object-contain drop-shadow-2xl animate-float"
+              style={{ maxHeight: '580px' }}
             />
-            <div className="absolute -bottom-5 -left-5 bg-white rounded-3xl shadow-xl px-5 py-4 flex items-center gap-3 animate-float">
-              <span className="text-3xl">🎨</span>
+            <div className="absolute -bottom-2 -left-2 bg-white rounded-3xl shadow-xl px-5 py-4 flex items-center gap-3 animate-float" style={{ animationDelay: '1s' }}>
+              <span className="text-3xl">🚀</span>
               <div>
                 <div className="font-display font-extrabold leading-none">Записываемся!</div>
                 <div className="text-xs text-foreground/60 font-bold">новый набор групп</div>
