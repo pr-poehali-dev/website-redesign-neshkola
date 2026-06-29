@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
+import GlossyBlob from '@/components/GlossyBlob';
 import { Input } from '@/components/ui/input';
 import {
   Select,
@@ -156,9 +157,10 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section className="relative">
-        <div className="absolute -top-10 -left-10 h-72 w-72 bg-sun/40 animate-blob" />
-        <div className="absolute top-40 right-0 h-80 w-80 bg-teal/30 animate-blob" style={{ animationDelay: '2s' }} />
+      <section className="relative overflow-hidden">
+        <GlossyBlob size={200} color="#6abf3a" className="-top-12 -left-14 opacity-70" delay={0} />
+        <GlossyBlob size={140} color="#8b4fcf" className="top-32 right-8 opacity-60" delay={1.5} slow />
+        <GlossyBlob size={90}  color="#3db87a" className="bottom-10 left-1/3 opacity-50" delay={3} slow />
         <div className="container relative grid lg:grid-cols-2 gap-10 items-center py-16 lg:py-24">
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-bold text-accent-foreground mb-6">
@@ -216,7 +218,9 @@ function Index() {
       </section>
 
       {/* Features / About */}
-      <section id="about" className="container py-16 lg:py-24">
+      <section id="about" className="relative overflow-hidden container py-16 lg:py-24">
+        <GlossyBlob size={110} color="#8b4fcf" className="top-0 right-0 opacity-40" delay={2} slow />
+        <GlossyBlob size={75}  color="#6abf3a" className="bottom-4 left-0 opacity-35" delay={0.8} />
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">
             Почему выбирают <span className="text-primary">НЕШКОЛУ</span>
@@ -243,8 +247,10 @@ function Index() {
       </section>
 
       {/* Programs */}
-      <section id="programs" className="bg-secondary/10 py-16 lg:py-24">
-        <div className="container">
+      <section id="programs" className="relative overflow-hidden bg-secondary/10 py-16 lg:py-24">
+        <GlossyBlob size={160} color="#6abf3a" className="-top-10 -right-10 opacity-30" delay={1} slow />
+        <GlossyBlob size={100} color="#8b4fcf" className="bottom-0 left-10 opacity-25" delay={3.5} />
+        <div className="container relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
               6 направлений • 30+ программ
@@ -273,7 +279,9 @@ function Index() {
       </section>
 
       {/* Schedule */}
-      <section id="schedule" className="container py-16 lg:py-24">
+      <section id="schedule" className="relative overflow-hidden container py-16 lg:py-24">
+        <GlossyBlob size={130} color="#3db87a" className="top-8 -right-8 opacity-35" delay={0.5} />
+        <GlossyBlob size={85}  color="#8b4fcf" className="bottom-8 left-4 opacity-30" delay={2.2} slow />
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">Расписание занятий</h2>
           <p className="text-lg text-foreground/70">Выберите удобный день — и приходите за новыми открытиями!</p>
@@ -305,8 +313,9 @@ function Index() {
       <section id="signup" className="py-16 lg:py-24">
         <div className="container">
           <div className="relative overflow-hidden rounded-[3rem] bg-primary p-8 md:p-14 shadow-2xl">
-            <div className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-white/10" />
-            <div className="absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-white/10" />
+            <GlossyBlob size={180} color="#ffffff" className="-top-16 -right-16 opacity-15" delay={0} slow />
+            <GlossyBlob size={220} color="#3db87a" className="-bottom-20 -left-16 opacity-20" delay={2} />
+            <GlossyBlob size={90}  color="#ffffff" className="top-1/2 right-1/4 opacity-10" delay={1} slow />
             <div className="relative grid lg:grid-cols-2 gap-10 items-center">
               <div className="text-primary-foreground">
                 <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">

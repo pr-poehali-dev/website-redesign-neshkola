@@ -121,3 +121,75 @@
     -webkit-text-stroke: 2px hsl(var(--foreground));
   }
 }
+
+/* Glossy blob decorations */
+.blob-glossy {
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  animation:
+    blob-morph 7s ease-in-out infinite,
+    blob-drift 12s ease-in-out infinite;
+  position: absolute;
+  pointer-events: none;
+  filter: blur(0px);
+}
+
+.blob-glossy::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 18%;
+  width: 38%;
+  height: 28%;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  filter: blur(6px);
+  transform: rotate(-20deg);
+}
+
+@keyframes blob-morph {
+  0%,
+  100% {
+    border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  }
+  25% {
+    border-radius: 45% 55% 40% 60% / 60% 45% 55% 40%;
+  }
+  50% {
+    border-radius: 50% 50% 65% 35% / 40% 55% 45% 60%;
+  }
+  75% {
+    border-radius: 35% 65% 50% 50% / 55% 40% 60% 45%;
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-18px) rotate(8deg) scale(1.04);
+  }
+  66% {
+    transform: translateY(10px) rotate(-5deg) scale(0.97);
+  }
+}
+
+@keyframes blob-drift-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  40% {
+    transform: translateY(22px) rotate(-10deg) scale(1.06);
+  }
+  70% {
+    transform: translateY(-12px) rotate(6deg) scale(0.95);
+  }
+}
+
+.blob-drift-slow {
+  animation:
+    blob-morph 9s ease-in-out infinite reverse,
+    blob-drift-slow 15s ease-in-out infinite;
+}
