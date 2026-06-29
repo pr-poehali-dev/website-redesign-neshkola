@@ -243,28 +243,41 @@ function Index() {
       <section id="about" className="relative overflow-hidden container py-16 lg:py-24">
         <GlossyBlob size={110} color="#7B3FA0" className="top-0 right-0 opacity-35" delay={2} slow />
         <GlossyBlob size={75}  color="#00B33C" className="bottom-4 left-0 opacity-30" delay={0.8} />
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">
-            Почему выбирают <span className="text-primary">НЕШКОЛУ</span>
-          </h2>
-          <p className="text-lg text-foreground/70">
-            Мы создали место, где каждый ребёнок раскрывает свои таланты и с радостью бежит на занятия.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FEATURES.map((f, i) => (
-            <div
-              key={f.title}
-              className="bg-card rounded-3xl p-7 shadow-lg hover:-translate-y-2 transition-transform duration-300"
-              style={{ animationDelay: `${i * 0.1}s` }}
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent mb-5">
-                <Icon name={f.icon} size={28} className="text-accent-foreground" />
-              </div>
-              <h3 className="font-display text-xl font-extrabold mb-2">{f.title}</h3>
-              <p className="text-foreground/70">{f.desc}</p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
+          <div>
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">
+              Почему выбирают <span className="text-primary">НЕШКОЛУ</span>
+            </h2>
+            <p className="text-lg text-foreground/70 mb-8">
+              Мы создали место, где каждый ребёнок раскрывает свои таланты и с радостью бежит на занятия.
+            </p>
+            <div className="grid grid-cols-2 gap-5">
+              {FEATURES.map((f, i) => (
+                <div
+                  key={f.title}
+                  className="bg-card rounded-3xl p-6 shadow-lg hover:-translate-y-2 transition-transform duration-300"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent mb-4">
+                    <Icon name={f.icon} size={24} className="text-accent-foreground" />
+                  </div>
+                  <h3 className="font-display text-lg font-extrabold mb-1">{f.title}</h3>
+                  <p className="text-sm text-foreground/70">{f.desc}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="relative flex justify-center">
+            <img
+              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/99041874-7966-4c5f-97dc-cfb9f56a5dff.png"
+              alt="Педагог НЕШКОЛЫ"
+              className="relative z-10 w-72 lg:w-80 object-contain drop-shadow-2xl animate-float"
+            />
+            <div className="absolute bottom-4 right-4 bg-secondary text-white rounded-3xl px-5 py-4 shadow-xl font-display font-extrabold text-lg z-20 animate-float" style={{ animationDelay: '1.2s' }}>
+              Наши педагоги —<br />
+              <span className="text-accent font-extrabold">с душой и опытом!</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -273,11 +286,19 @@ function Index() {
         <GlossyBlob size={160} color="#00B33C" className="-top-10 -right-10 opacity-25" delay={1} slow />
         <GlossyBlob size={100} color="#7B3FA0" className="bottom-0 left-10 opacity-20" delay={3.5} />
         <div className="container relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
-              6 направлений • 30+ программ
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-extrabold">Наши программы</h2>
+          <div className="flex flex-col lg:flex-row items-center gap-6 mb-12">
+            <div className="text-center lg:text-left flex-1">
+              <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
+                6 направлений • 30+ программ
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-extrabold">Наши программы</h2>
+            </div>
+            <img
+              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/310fd671-756b-4ed8-b97e-ba5d915d3c30.png"
+              alt="Заявка на занятие"
+              className="w-32 lg:w-44 object-contain drop-shadow-xl animate-float shrink-0"
+              style={{ animationDelay: '0.5s' }}
+            />
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROGRAM_GROUPS.map((g) => (
@@ -350,6 +371,17 @@ function Index() {
         </div>
       </section>
 
+      {/* Newsletter banner */}
+      <section className="container pb-4">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-primary shadow-2xl">
+          <img
+            src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/477c9173-5d60-44f2-93f4-3f12f10bdd86.png"
+            alt="Подпишись на рассылку НЕШКОЛЫ"
+            className="w-full object-cover max-h-64 lg:max-h-80"
+          />
+        </div>
+      </section>
+
       {/* Signup */}
       <section id="signup" className="py-16 lg:py-24">
         <div className="container">
@@ -366,10 +398,16 @@ function Index() {
                   Оставьте заявку — мы подберём программу под вашего ребёнка и подтвердим запись
                   по email или SMS.
                 </p>
-                <div className="flex items-center gap-3 font-bold">
+                <div className="flex items-center gap-3 font-bold mb-6">
                   <Icon name="Gift" size={24} />
                   Первое пробное занятие — бесплатно!
                 </div>
+                <img
+                  src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/310fd671-756b-4ed8-b97e-ba5d915d3c30.png"
+                  alt="Заявка"
+                  className="w-36 object-contain drop-shadow-xl animate-float hidden lg:block"
+                  style={{ animationDelay: '0.8s' }}
+                />
               </div>
               <form onSubmit={handleSubmit} className="bg-card rounded-3xl p-7 shadow-xl space-y-4">
                 <div>
