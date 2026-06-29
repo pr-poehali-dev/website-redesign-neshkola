@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
-
-const PDF_URL = 'https://functions.poehali.dev/8cfcbdd9-9fe1-45b2-9a98-4d05f5e0c880';
 import { Button } from '@/components/ui/button';
 import GlossyBlob from '@/components/GlossyBlob';
 import { Input } from '@/components/ui/input';
@@ -101,12 +99,12 @@ const PROGRAM_GROUPS = [
 const ALL_PROGRAMS = PROGRAM_GROUPS.flatMap(g => g.items);
 
 const SCHEDULE = [
-  { day: 'Понедельник', items: ['9:00 Логопед (инд.)', '10:00 Учусь читать 4–5 лет', '16:00 Подготовка к школе', '17:30 Английский (группа)'] },
-  { day: 'Вторник', items: ['10:00 ИЗО студия', '11:30 Нейробика', '16:00 Ментальная арифметика', '17:30 Психолог (инд.)'] },
-  { day: 'Среда', items: ['9:00 Логопед (инд.)', '10:00 Подготовка к школе', '16:00 Английский (группа)', '17:30 Русский язык + ВПР'] },
-  { day: 'Четверг', items: ['10:00 Пластилинка', '11:30 Школа внимания', '16:00 Математика 2–4 класс', '17:30 Английский (инд.)'] },
-  { day: 'Пятница', items: ['9:00 Логопед (инд.)', '10:00 Техника чтения', '16:00 Нейролепка', '17:30 Ментальная арифметика'] },
-  { day: 'Суббота', items: ['10:00 Песочная сказка', '11:30 ИЗО / Креативное рисование', '13:00 Подготовка к школе (экспресс)', '14:30 Сам себе психолог'] },
+  { day: 'Понедельник', items: ['10:00 Творчество', '16:00 Подготовка к школе'] },
+  { day: 'Вторник', items: ['11:00 Английский', '17:00 Робототехника'] },
+  { day: 'Среда', items: ['10:00 Музыка и ритмика', '16:00 Ментальная арифметика'] },
+  { day: 'Четверг', items: ['11:00 Творчество', '17:00 Английский'] },
+  { day: 'Пятница', items: ['10:00 Подготовка к школе', '16:00 Робототехника'] },
+  { day: 'Суббота', items: ['11:00 Семейный день', '13:00 Открытое занятие'] },
 ];
 
 const FEATURES = [
@@ -120,26 +118,6 @@ function Index() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [program, setProgram] = useState('');
-  const [pdfLoading, setPdfLoading] = useState(false);
-
-  const handleDownloadPdf = async () => {
-    setPdfLoading(true);
-    try {
-      const res = await fetch(PDF_URL);
-      if (!res.ok) throw new Error('Ошибка генерации');
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'neshkola-buklет.pdf';
-      a.click();
-      URL.revokeObjectURL(url);
-    } catch {
-      toast({ title: 'Ошибка', description: 'Не удалось скачать буклет. Попробуйте позже.', variant: 'destructive' });
-    } finally {
-      setPdfLoading(false);
-    }
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -220,15 +198,15 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className="relative animate-scale-in flex items-center justify-center">
+          <div className="relative animate-scale-in">
+            <div className="absolute inset-0 bg-secondary rounded-[3rem] rotate-6" />
             <img
-              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/b16e2d03-cfcb-4562-a981-fa961fe6ba40.png"
-              alt="Персонажи НЕШКОЛЫ"
-              className="relative w-full object-contain animate-float"
-              style={{ maxHeight: '580px', mixBlendMode: 'multiply' }}
+              src={HERO_IMG}
+              alt="Дети на развивающих занятиях"
+              className="relative rounded-[3rem] shadow-2xl w-full object-cover aspect-square"
             />
-            <div className="absolute -bottom-2 -left-2 bg-white rounded-3xl shadow-xl px-5 py-4 flex items-center gap-3 animate-float" style={{ animationDelay: '1s' }}>
-              <span className="text-3xl">🚀</span>
+            <div className="absolute -bottom-5 -left-5 bg-white rounded-3xl shadow-xl px-5 py-4 flex items-center gap-3 animate-float">
+              <span className="text-3xl">🎨</span>
               <div>
                 <div className="font-display font-extrabold leading-none">Записываемся!</div>
                 <div className="text-xs text-foreground/60 font-bold">новый набор групп</div>
@@ -242,42 +220,28 @@ function Index() {
       <section id="about" className="relative overflow-hidden container py-16 lg:py-24">
         <GlossyBlob size={110} color="#7B3FA0" className="top-0 right-0 opacity-35" delay={2} slow />
         <GlossyBlob size={75}  color="#00B33C" className="bottom-4 left-0 opacity-30" delay={0.8} />
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
-          <div>
-            <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">
-              Почему выбирают <span className="text-primary">НЕШКОЛУ</span>
-            </h2>
-            <p className="text-lg text-foreground/70 mb-8">
-              Мы создали место, где каждый ребёнок раскрывает свои таланты и с радостью бежит на занятия.
-            </p>
-            <div className="grid grid-cols-2 gap-5">
-              {FEATURES.map((f, i) => (
-                <div
-                  key={f.title}
-                  className="bg-card rounded-3xl p-6 shadow-lg hover:-translate-y-2 transition-transform duration-300"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent mb-4">
-                    <Icon name={f.icon} size={24} className="text-accent-foreground" />
-                  </div>
-                  <h3 className="font-display text-lg font-extrabold mb-1">{f.title}</h3>
-                  <p className="text-sm text-foreground/70">{f.desc}</p>
-                </div>
-              ))}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4">
+            Почему выбирают <span className="text-primary">НЕШКОЛУ</span>
+          </h2>
+          <p className="text-lg text-foreground/70">
+            Мы создали место, где каждый ребёнок раскрывает свои таланты и с радостью бежит на занятия.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {FEATURES.map((f, i) => (
+            <div
+              key={f.title}
+              className="bg-card rounded-3xl p-7 shadow-lg hover:-translate-y-2 transition-transform duration-300"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent mb-5">
+                <Icon name={f.icon} size={28} className="text-accent-foreground" />
+              </div>
+              <h3 className="font-display text-xl font-extrabold mb-2">{f.title}</h3>
+              <p className="text-foreground/70">{f.desc}</p>
             </div>
-          </div>
-          <div className="relative flex justify-center">
-            <img
-              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/99041874-7966-4c5f-97dc-cfb9f56a5dff.png"
-              alt="Педагог НЕШКОЛЫ"
-              className="relative z-10 w-72 lg:w-80 object-contain animate-float"
-              style={{ mixBlendMode: 'multiply' }}
-            />
-            <div className="absolute bottom-4 right-4 bg-secondary text-white rounded-3xl px-5 py-4 shadow-xl font-display font-extrabold text-lg z-20 animate-float" style={{ animationDelay: '1.2s' }}>
-              Наши педагоги —<br />
-              <span className="text-accent font-extrabold">с душой и опытом!</span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -286,20 +250,11 @@ function Index() {
         <GlossyBlob size={160} color="#00B33C" className="-top-10 -right-10 opacity-25" delay={1} slow />
         <GlossyBlob size={100} color="#7B3FA0" className="bottom-0 left-10 opacity-20" delay={3.5} />
         <div className="container relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-6 mb-12">
-            <div className="text-center lg:text-left flex-1">
-              <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
-                6 направлений • 30+ программ
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-extrabold">Наши программы</h2>
-            </div>
-            <img
-              src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/310fd671-756b-4ed8-b97e-ba5d915d3c30.png"
-              alt="Заявка на занятие"
-              className="w-32 lg:w-44 object-contain animate-float shrink-0"
-              style={{ mixBlendMode: 'multiply' }}
-              style={{ animationDelay: '0.5s' }}
-            />
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block rounded-full bg-secondary/20 px-4 py-2 font-bold text-secondary mb-4">
+              6 направлений • 30+ программ
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold">Наши программы</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROGRAM_GROUPS.map((g) => (
@@ -351,51 +306,6 @@ function Index() {
             </div>
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
-          <button
-            onClick={handleDownloadPdf}
-            disabled={pdfLoading}
-            className="inline-flex items-center gap-3 rounded-full bg-secondary text-white font-display font-extrabold text-lg px-8 h-14 shadow-xl shadow-secondary/30 hover:scale-105 hover:shadow-2xl transition-all duration-300 disabled:opacity-60 disabled:scale-100"
-          >
-            {pdfLoading ? (
-              <>
-                <Icon name="Loader" size={22} className="animate-spin" />
-                Генерируем буклет...
-              </>
-            ) : (
-              <>
-                <Icon name="Download" size={22} />
-                Скачать полный буклет (PDF)
-              </>
-            )}
-          </button>
-        </div>
-      </section>
-
-      {/* Newsletter banner */}
-      <section className="container pb-4">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-primary shadow-2xl flex items-center justify-between px-8 md:px-14 py-10 gap-6">
-          <GlossyBlob size={140} color="#ffffff" className="-top-10 -left-10 opacity-10" delay={0} slow />
-          <div className="relative z-10 text-white max-w-lg">
-            <p className="font-display text-2xl md:text-3xl font-extrabold mb-1">
-              <span className="text-accent">Узнай</span> о полезных и интересных
-            </p>
-            <p className="font-display text-2xl md:text-3xl font-extrabold mb-4">
-              <span className="text-accent">новостях</span> первым
-            </p>
-            <a href="https://vk.com/neshkola60" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-secondary font-display font-extrabold rounded-full px-6 py-3 hover:scale-105 transition-transform shadow-lg">
-              <Icon name="Send" size={20} />
-              Подписаться на рассылку
-            </a>
-          </div>
-          <img
-            src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/477c9173-5d60-44f2-93f4-3f12f10bdd86.png"
-            alt="Подпишись на рассылку"
-            className="hidden md:block w-64 lg:w-80 object-contain shrink-0"
-            style={{ mixBlendMode: 'multiply' }}
-          />
-        </div>
       </section>
 
       {/* Signup */}
@@ -414,17 +324,10 @@ function Index() {
                   Оставьте заявку — мы подберём программу под вашего ребёнка и подтвердим запись
                   по email или SMS.
                 </p>
-                <div className="flex items-center gap-3 font-bold mb-6">
+                <div className="flex items-center gap-3 font-bold">
                   <Icon name="Gift" size={24} />
                   Первое пробное занятие — бесплатно!
                 </div>
-                <img
-                  src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/310fd671-756b-4ed8-b97e-ba5d915d3c30.png"
-                  alt="Заявка"
-                  className="w-36 object-contain animate-float hidden lg:block"
-                  style={{ mixBlendMode: 'luminosity' }}
-                  style={{ animationDelay: '0.8s' }}
-                />
               </div>
               <form onSubmit={handleSubmit} className="bg-card rounded-3xl p-7 shadow-xl space-y-4">
                 <div>
@@ -489,33 +392,22 @@ function Index() {
               Центр развития детей, где учиться — это радость, а каждый день — открытие.
             </p>
           </div>
-          <div className="space-y-5">
-            <div>
-              <p className="font-extrabold text-background/90 mb-1">ЧУ ДПО УЦ «ЗНАНИЯ»</p>
-              <ul className="space-y-2 text-background/75">
-                <li className="flex items-start gap-3">
-                  <Icon name="MapPin" size={18} className="text-accent shrink-0 mt-0.5" />
-                  Псков, Ольгинская набережная, 9а, 3 этаж
-                </li>
-                <li className="flex items-center gap-3">
-                  <Icon name="Phone" size={18} className="text-accent shrink-0" />
-                  <a href="tel:+79113531001" className="hover:text-primary transition-colors">+7 (911) 353-10-01</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-extrabold text-background/90 mb-1">ИП Захарова А. Н.</p>
-              <ul className="space-y-2 text-background/75">
-                <li className="flex items-start gap-3">
-                  <Icon name="MapPin" size={18} className="text-accent shrink-0 mt-0.5" />
-                  Псков, ул. Инженерная, 125
-                </li>
-                <li className="flex items-center gap-3">
-                  <Icon name="Phone" size={18} className="text-accent shrink-0" />
-                  <a href="tel:+79113531000" className="hover:text-primary transition-colors">+7 (911) 353-10-00</a>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <h3 className="font-display text-xl font-extrabold mb-4">Контакты</h3>
+            <ul className="space-y-3 text-background/80">
+              <li className="flex items-center gap-3">
+                <Icon name="MapPin" size={20} className="text-accent" /> г. Псков, ул. Детская, 1
+              </li>
+              <li className="flex items-center gap-3">
+                <Icon name="Phone" size={20} className="text-accent" /> +7 (8112) 00-00-00
+              </li>
+              <li className="flex items-center gap-3">
+                <Icon name="Mail" size={20} className="text-accent" /> hello@neshkola60.ru
+              </li>
+              <li className="flex items-center gap-3">
+                <Icon name="Clock" size={20} className="text-accent" /> Пн–Сб: 9:00 – 20:00
+              </li>
+            </ul>
           </div>
           <div>
             <h3 className="font-display text-xl font-extrabold mb-4">Мы в соцсетях</h3>
