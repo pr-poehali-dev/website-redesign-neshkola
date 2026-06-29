@@ -221,12 +221,11 @@ function Index() {
             </div>
           </div>
           <div className="relative animate-scale-in flex items-center justify-center">
-            <div className="absolute inset-0 rounded-[3rem] bg-primary rotate-3 opacity-20" />
             <img
               src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/b16e2d03-cfcb-4562-a981-fa961fe6ba40.png"
               alt="Персонажи НЕШКОЛЫ"
-              className="relative w-full object-contain drop-shadow-2xl animate-float"
-              style={{ maxHeight: '580px' }}
+              className="relative w-full object-contain animate-float"
+              style={{ maxHeight: '580px', mixBlendMode: 'multiply' }}
             />
             <div className="absolute -bottom-2 -left-2 bg-white rounded-3xl shadow-xl px-5 py-4 flex items-center gap-3 animate-float" style={{ animationDelay: '1s' }}>
               <span className="text-3xl">🚀</span>
@@ -271,7 +270,8 @@ function Index() {
             <img
               src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/99041874-7966-4c5f-97dc-cfb9f56a5dff.png"
               alt="Педагог НЕШКОЛЫ"
-              className="relative z-10 w-72 lg:w-80 object-contain drop-shadow-2xl animate-float"
+              className="relative z-10 w-72 lg:w-80 object-contain animate-float"
+              style={{ mixBlendMode: 'multiply' }}
             />
             <div className="absolute bottom-4 right-4 bg-secondary text-white rounded-3xl px-5 py-4 shadow-xl font-display font-extrabold text-lg z-20 animate-float" style={{ animationDelay: '1.2s' }}>
               Наши педагоги —<br />
@@ -296,7 +296,8 @@ function Index() {
             <img
               src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/310fd671-756b-4ed8-b97e-ba5d915d3c30.png"
               alt="Заявка на занятие"
-              className="w-32 lg:w-44 object-contain drop-shadow-xl animate-float shrink-0"
+              className="w-32 lg:w-44 object-contain animate-float shrink-0"
+              style={{ mixBlendMode: 'multiply' }}
               style={{ animationDelay: '0.5s' }}
             />
           </div>
@@ -373,11 +374,26 @@ function Index() {
 
       {/* Newsletter banner */}
       <section className="container pb-4">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-primary shadow-2xl">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-primary shadow-2xl flex items-center justify-between px-8 md:px-14 py-10 gap-6">
+          <GlossyBlob size={140} color="#ffffff" className="-top-10 -left-10 opacity-10" delay={0} slow />
+          <div className="relative z-10 text-white max-w-lg">
+            <p className="font-display text-2xl md:text-3xl font-extrabold mb-1">
+              <span className="text-accent">Узнай</span> о полезных и интересных
+            </p>
+            <p className="font-display text-2xl md:text-3xl font-extrabold mb-4">
+              <span className="text-accent">новостях</span> первым
+            </p>
+            <a href="https://vk.com/neshkola60" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white text-secondary font-display font-extrabold rounded-full px-6 py-3 hover:scale-105 transition-transform shadow-lg">
+              <Icon name="Send" size={20} />
+              Подписаться на рассылку
+            </a>
+          </div>
           <img
             src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/477c9173-5d60-44f2-93f4-3f12f10bdd86.png"
-            alt="Подпишись на рассылку НЕШКОЛЫ"
-            className="w-full object-cover max-h-64 lg:max-h-80"
+            alt="Подпишись на рассылку"
+            className="hidden md:block w-64 lg:w-80 object-contain shrink-0"
+            style={{ mixBlendMode: 'multiply' }}
           />
         </div>
       </section>
@@ -405,7 +421,8 @@ function Index() {
                 <img
                   src="https://cdn.poehali.dev/projects/8b576231-af46-4008-b393-3acd1d3dd05f/bucket/310fd671-756b-4ed8-b97e-ba5d915d3c30.png"
                   alt="Заявка"
-                  className="w-36 object-contain drop-shadow-xl animate-float hidden lg:block"
+                  className="w-36 object-contain animate-float hidden lg:block"
+                  style={{ mixBlendMode: 'luminosity' }}
                   style={{ animationDelay: '0.8s' }}
                 />
               </div>
