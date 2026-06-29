@@ -392,22 +392,33 @@ function Index() {
               Центр развития детей, где учиться — это радость, а каждый день — открытие.
             </p>
           </div>
-          <div>
-            <h3 className="font-display text-xl font-extrabold mb-4">Контакты</h3>
-            <ul className="space-y-3 text-background/80">
-              <li className="flex items-center gap-3">
-                <Icon name="MapPin" size={20} className="text-accent" /> г. Псков, ул. Детская, 1
-              </li>
-              <li className="flex items-center gap-3">
-                <Icon name="Phone" size={20} className="text-accent" /> +7 (8112) 00-00-00
-              </li>
-              <li className="flex items-center gap-3">
-                <Icon name="Mail" size={20} className="text-accent" /> hello@neshkola60.ru
-              </li>
-              <li className="flex items-center gap-3">
-                <Icon name="Clock" size={20} className="text-accent" /> Пн–Сб: 9:00 – 20:00
-              </li>
-            </ul>
+          <div className="space-y-5">
+            <div>
+              <p className="font-extrabold text-background/90 mb-1">ЧУ ДПО УЦ «ЗНАНИЯ»</p>
+              <ul className="space-y-2 text-background/75">
+                <li className="flex items-start gap-3">
+                  <Icon name="MapPin" size={18} className="text-accent shrink-0 mt-0.5" />
+                  Псков, Ольгинская набережная, 9а, 3 этаж
+                </li>
+                <li className="flex items-center gap-3">
+                  <Icon name="Phone" size={18} className="text-accent shrink-0" />
+                  <a href="tel:+79113531001" className="hover:text-primary transition-colors">+7 (911) 353-10-01</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-extrabold text-background/90 mb-1">ИП Захарова А. Н.</p>
+              <ul className="space-y-2 text-background/75">
+                <li className="flex items-start gap-3">
+                  <Icon name="MapPin" size={18} className="text-accent shrink-0 mt-0.5" />
+                  Псков, ул. Инженерная, 125
+                </li>
+                <li className="flex items-center gap-3">
+                  <Icon name="Phone" size={18} className="text-accent shrink-0" />
+                  <a href="tel:+79113531000" className="hover:text-primary transition-colors">+7 (911) 353-10-00</a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div>
             <h3 className="font-display text-xl font-extrabold mb-4">Мы в соцсетях</h3>
